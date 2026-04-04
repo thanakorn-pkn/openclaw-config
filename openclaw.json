@@ -1,0 +1,275 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.3.28",
+    "lastTouchedAt": "2026-04-02T02:04:40.364Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-03-29T04:14:05.191Z",
+    "lastRunVersion": "2026.3.24",
+    "lastRunCommand": "onboard",
+    "lastRunMode": "local"
+  },
+  "auth": {
+    "profiles": {
+      "anthropic:default": {
+        "provider": "anthropic",
+        "mode": "token"
+      },
+      "openai-codex:thanakorn.pkn@gmail.com": {
+        "provider": "openai-codex",
+        "mode": "oauth",
+        "email": "thanakorn.pkn@gmail.com"
+      }
+    }
+  },
+  "acp": {
+    "enabled": true,
+    "backend": "acpx",
+    "defaultAgent": "codex",
+    "allowedAgents": [
+      "claude",
+      "codex",
+      "gemini",
+      "opencode"
+    ],
+    "maxConcurrentSessions": 4,
+    "stream": {
+      "coalesceIdleMs": 300,
+      "maxChunkChars": 1200
+    },
+    "runtime": {
+      "ttlMinutes": 120
+    }
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "google": {
+        "baseUrl": "https://generativelanguage.googleapis.com",
+        "apiKey": {
+          "source": "env",
+          "provider": "default",
+          "id": "GEMINI_API_KEY"
+        },
+        "api": "google-generative-ai",
+        "models": [
+          {
+            "id": "gemini-2.5-flash",
+            "name": "Gemini 2.5 Flash",
+            "input": [
+              "text"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 65536
+          },
+          {
+            "id": "gemini-2.5-flash-lite",
+            "name": "Gemini 2.5 Flash-Lite",
+            "input": [
+              "text"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 65536
+          },
+          {
+            "id": "gemini-3-flash-preview",
+            "name": "Gemini 3 Flash Preview",
+            "input": [
+              "text"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 65536
+          },
+          {
+            "id": "gemini-3.1-flash-lite-preview",
+            "name": "Gemini 3.1 Flash Lite Preview",
+            "input": [
+              "text"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 65536
+          },
+          {
+            "id": "gemini-flash-latest",
+            "name": "Gemini Flash Latest",
+            "input": [
+              "text"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 65536
+          },
+          {
+            "id": "gemma-3-27b-it",
+            "name": "Gemma 3 27B",
+            "input": [
+              "text"
+            ],
+            "contextWindow": 131072,
+            "maxTokens": 8192
+          }
+        ]
+      },
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "openai-codex/gpt-5.4"
+      },
+      "models": {
+        "google/gemini-2.5-flash": {},
+        "google/gemini-2.5-flash-lite": {},
+        "google/gemini-3-flash-preview": {},
+        "google/gemini-3.1-flash-lite-preview": {},
+        "google/gemini-flash-latest": {},
+        "google/gemma-3-27b-it": {},
+        "openai-codex/gpt-5.4": {}
+      },
+      "workspace": "/home/tphat/.openclaw/workspace",
+      "bootstrapMaxChars": 8000,
+      "bootstrapTotalMaxChars": 30000,
+      "contextPruning": {
+        "mode": "cache-ttl",
+        "ttl": "1h"
+      },
+      "compaction": {
+        "mode": "safeguard",
+        "memoryFlush": {
+          "enabled": true
+        }
+      },
+      "heartbeat": {
+        "every": "0m",
+        "lightContext": true,
+        "isolatedSession": true
+      },
+      "subagents": {
+        "maxConcurrent": 4,
+        "maxSpawnDepth": 2,
+        "maxChildrenPerAgent": 3,
+        "runTimeoutSeconds": 600
+      }
+    }
+  },
+  "tools": {
+    "profile": "coding",
+    "web": {
+      "search": {
+        "enabled": true,
+        "provider": "gemini"
+      }
+    }
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "session": {
+    "dmScope": "main",
+    "reset": {
+      "mode": "idle",
+      "idleMinutes": 120
+    },
+    "maintenance": {
+      "mode": "warn",
+      "pruneAfter": "180d",
+      "maxEntries": 2000,
+      "resetArchiveRetention": false
+    }
+  },
+  "hooks": {
+    "internal": {
+      "entries": {
+        "session-memory": {
+          "enabled": true,
+          "messages": 10
+        }
+      }
+    }
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "dmPolicy": "pairing",
+      "groupPolicy": "disabled",
+      "streaming": "off",
+      "configWrites": true,
+      "capabilities": {
+        "inlineButtons": "dm"
+      },
+      "execApprovals": {
+        "enabled": true,
+        "approvers": [
+          "6538865360"
+        ],
+        "target": "dm"
+      }
+    }
+  },
+  "discovery": {
+    "mdns": {
+      "mode": "off"
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "lan",
+    "controlUi": {
+      "allowedOrigins": [
+        "http://localhost:18789",
+        "http://127.0.0.1:18789",
+        "http://192.168.1.161:18789",
+        "https://openclaw.bp-house.com"
+      ]
+    },
+    "auth": {
+      "mode": "token",
+      "rateLimit": {
+        "maxAttempts": 10,
+        "windowMs": 60000,
+        "lockoutMs": 300000,
+        "exemptLoopback": true
+      }
+    },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    }
+  },
+  "plugins": {
+    "load": {
+      "paths": []
+    },
+    "slots": {
+      "contextEngine": "legacy"
+    },
+    "entries": {
+      "telegram": {
+        "enabled": true,
+        "config": {}
+      },
+      "acpx": {
+        "enabled": true,
+        "config": {
+          "permissionMode": "approve-all",
+          "nonInteractivePermissions": "deny"
+        }
+      },
+      "google": {
+        "enabled": true,
+        "config": {
+          "webSearch": {
+            "apiKey": {
+              "source": "env",
+              "provider": "default",
+              "id": "GEMINI_API_KEY"
+            }
+          }
+        }
+      }
+    }
+  }
+}
