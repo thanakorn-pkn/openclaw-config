@@ -18,6 +18,7 @@
 - On Telegram, only Alice may speak directly to Bank; all sub-agent work must stay behind the scenes and be reported back by Alice.
 - For detailed sub-agent documents/proposals, automate a draft → review → revise loop with a maximum of 2 review/revision rounds, then summarize the result to Bank.
 - Coding agent preference: Gemini 3 first; fallback to Claude Code (Sonnet).
+- Bank expects Gemini to be used heavily for coding when usable, since quota is available there; fallback only when Gemini is actually unhealthy.
 - Codex is primarily used as Runner / execution helper, not the default coding agent.
 - Prefer Gemini 3 via Gemini CLI as the reviewer when that path is healthy.
 - Fallback review order: Codex first, then Bank.
