@@ -1,13 +1,9 @@
 # MEMORY.md
 
 ## User Preferences
-- Compact answers first; add detail only when asked.
-- Python-first data engineer at KKP.
 - Preferred tooling: pnpm, biome, uv, ruff, Justfile, Podman, Kubernetes with Flux.
 - Default database: PostgreSQL.
-- Active PKM / Obsidian vault: `/srv/syncthing/obsidian-second-brain`.
-- OpenClaw area notes live under `/srv/syncthing/obsidian-second-brain/2.Area/OpenClaw`.
-- Interests: homelab, self-hosting, local LLMs, and trading bots.
+- OpenClaw area notes: `/srv/syncthing/obsidian-second-brain/2.Area/OpenClaw`.
 
 ## Workflow Preferences
 - Use conventional commits.
@@ -21,11 +17,13 @@
 - Bank expects Gemini to be used heavily for coding when usable, since quota is available there; fallback only when Gemini is actually unhealthy.
 - Codex is primarily used as Runner / execution helper, not the default coding agent.
 - Prefer Gemini 3 via Gemini CLI as the reviewer when that path is healthy.
+- Try Gemini review once; if it is not functional, proceed on Tech Lead's design/recommendation instead of blocking on repeated review retries.
 - Fallback review order: Codex first, then Bank.
 - After each ACP task finishes, verify the ACP session closed cleanly so stale sessions do not accumulate and exhaust the ACP session limit.
 - Include short assignment/status lines when delegating so Bank can see which agent owns which task.
 - Provide updates when assignments happen or progress changes.
 - If Bank says he is going to sleep, hold proactive updates until he says he is back, then summarize all queued updates in one message.
+- Proceed autonomously on the project unless a justified decision point requires Bank's attention.
 - Keep AGENTS.md and memory artifacts lean to avoid unnecessary context/token usage.
 - Use local models for secret-adjacent config, credential wiring, and validation.
 - Cloud models should only see variable names, not plaintext secrets.
@@ -37,7 +35,7 @@
 - Live config belongs in `~/.openclaw/openclaw.json`.
 
 ## Active Projects
-- Mission Control: Phase 1 building. Spec at `1. Project/Personal/P - Mission Control/`.
+- Mission Control: Phase 1 building. Homepage at `1. Project/Personal/P - Mission Control/Homepage.md`.
 - Agent Architecture: spec at `1. Project/Personal/P - Agent Architecture/`.
 
 ## Watchlist
