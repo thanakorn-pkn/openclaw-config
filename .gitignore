@@ -7,12 +7,11 @@
 cron/*
 !cron/jobs.json
 
-# Keep the workspace's previously versioned metadata in the parent repo.
+# Workspace — track all operator-managed files
 !workspace/
-!workspace/AGENTS.md
-!workspace/IDENTITY.md
-!workspace/MEMORY.md
+!workspace/*.md
+!workspace/scripts/
+!workspace/scripts/*
 !workspace/memory/
-!workspace/memory/2026-04-02.md
-!workspace/memory/2026-04-04.md
-!workspace/memory/2026-04-05.md
+!workspace/memory/*.md
+workspace/.openclaw/
