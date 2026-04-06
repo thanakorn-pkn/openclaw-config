@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastTouchedVersion": "2026.3.28",
-    "lastTouchedAt": "2026-04-02T02:04:40.364Z"
+    "lastTouchedVersion": "2026.4.1",
+    "lastTouchedAt": "2026-04-04T16:21:55.119Z"
   },
   "wizard": {
     "lastRunAt": "2026-03-29T04:14:05.191Z",
@@ -35,7 +35,7 @@
     "maxConcurrentSessions": 4,
     "stream": {
       "coalesceIdleMs": 300,
-      "maxChunkChars": 1200
+      "maxChunkChars": 3800
     },
     "runtime": {
       "ttlMinutes": 120
@@ -108,7 +108,7 @@
             "maxTokens": 8192
           }
         ]
-      },
+      }
     }
   },
   "agents": {
@@ -123,7 +123,10 @@
         "google/gemini-3.1-flash-lite-preview": {},
         "google/gemini-flash-latest": {},
         "google/gemma-3-27b-it": {},
-        "openai-codex/gpt-5.4": {}
+        "openai-codex/gpt-5.4": {},
+        "openrouter/auto": {},
+        "openrouter/openai/gpt-4.1-mini": {},
+        "openrouter/google/gemini-2.5-flash": {}
       },
       "workspace": "/home/tphat/.openclaw/workspace",
       "bootstrapMaxChars": 8000,
@@ -139,7 +142,7 @@
         }
       },
       "heartbeat": {
-        "every": "0m",
+        "every": "1h",
         "lightContext": true,
         "isolatedSession": true
       },
@@ -170,12 +173,12 @@
     "dmScope": "main",
     "reset": {
       "mode": "idle",
-      "idleMinutes": 120
+      "idleMinutes": 240
     },
     "maintenance": {
-      "mode": "warn",
-      "pruneAfter": "180d",
-      "maxEntries": 2000,
+      "mode": "auto",
+      "pruneAfter": "30d",
+      "maxEntries": 500,
       "resetArchiveRetention": false
     }
   },
@@ -200,7 +203,7 @@
         "inlineButtons": "dm"
       },
       "execApprovals": {
-        "enabled": true,
+        "enabled": false,
         "approvers": [
           "6538865360"
         ],
@@ -255,7 +258,7 @@
         "enabled": true,
         "config": {
           "permissionMode": "approve-all",
-          "nonInteractivePermissions": "deny"
+          "nonInteractivePermissions": "allow"
         }
       },
       "google": {
