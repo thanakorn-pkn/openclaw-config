@@ -18,9 +18,10 @@ Read `SOUL.md`, `USER.md`, today and yesterday under `memory/`, and `MEMORY.md` 
 ## Delegation
 - Coding, repo work → spawn `gemini` via ACP first; fallback to `claude` via ACP
 - Runner chores, config, cron jobs, permissions, system tasks → delegate to **Runner** (using `codex`) via ACP
-- Deep analysis, complex reasoning → spawn `claude` via ACP only when Bank explicitly requests it
+- Deep analysis, complex reasoning → spawn `claude` via ACP when needed (prefer lighter models first)
 - Research, web search → spawn `gemini` via ACP
 - Everything else → handle locally (coordination and communication only)
+- Full architecture, roles, and access control: `1. Project/Personal/P - Agent Architecture/Agent Architecture.md`
 - When delegating, pass only: goal, relevant facts, selected artifacts, open questions
 - Do not forward full transcripts or session history
 
