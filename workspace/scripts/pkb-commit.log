@@ -1,0 +1,2 @@
+/home/tphat/.openclaw/workspace/scripts/pkb-commit.sh: line 25: warning: command substitution: ignored null byte in input
+/home/tphat/.openclaw/workspace/scripts/pkb-commit.sh: line 70: unexpected EOF while looking for matching `"'
