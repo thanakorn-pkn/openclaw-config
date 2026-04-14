@@ -1,10 +1,11 @@
 #!/bin/bash
 # pkb-commit.sh
-# Run daily at 1 AM to commit changes in PKB file-by-file with AI-generated conventional commits.
+# Run daily at 3 AM to commit changes in PKB file-by-file with AI-generated conventional commits.
+# Commit message generation: Gemini CLI first, Codex fallback.
 
-export PATH=$PATH:/home/tphat/.local/share/pnpm:/usr/local/bin:/usr/bin:/bin
+export PATH="$PATH:/home/tphat/.local/share/pnpm:/home/tphat/.local/bin:/usr/local/bin:/usr/bin:/bin"
 
-# Load Claude auth if needed
+# Load shell auth/env if needed
 if [ -f ~/.bashrc ]; then
     source ~/.bashrc
 fi
@@ -30,12 +31,14 @@ fi
 
 git reset --mixed >/dev/null 2>&1
 
-while IFS= read -r -d "" file; do
-    if [ -z "$file" ]; then continue; fi
+while IFS= read -r -d '' file; do
+    if [ -z "$file" ]; then
+        continue
+    fi
 
     git add "$file"
     diff_text=$(git diff --cached -- "$file" | head -n 60)
-    
+
     if [ -z "$diff_text" ]; then
         folder=$(dirname "$file")
         filename=$(basename "$file")
@@ -47,12 +50,15 @@ while IFS= read -r -d "" file; do
     elif [[ "$file" == *".sync-conflict-"* ]]; then
         msg="chore: add syncthing conflict file"
     else
-        # We replace double quotes inside diff with single quotes to avoid breaking bash substitution safely
-        diff_text_clean=$(echo "$diff_text" | tr """ "'")
-        prompt="Write a 1-line conventional commit message (e.g. docs(Area): update note) for this PKB file change. Output ONLY the raw message string without quotes or markdown blocks. Keep it under 60 chars. Diff: ${diff_text_clean}"
-        
-        msg=$(claude -p "$prompt" 2>/dev/null)
-        
+        diff_text_clean=$(printf '%s' "$diff_text" | tr '"' "'")
+        prompt="Write a 1-line conventional commit message (e.g. docs(area): update note) for this PKB file change. Output ONLY the raw message string without quotes or markdown blocks. Keep it under 60 chars. Diff: ${diff_text_clean}"
+
+        msg=$(gemini -p "$prompt" -o text 2>/dev/null)
+
+        if [ -z "$msg" ] || [[ "$msg" == *"Error"* ]] || [[ "$msg" == *"Rate limit"* ]]; then
+            msg=$(codex exec -C "$REPO" --sandbox read-only -a never "$prompt" 2>/dev/null)
+        fi
+
         if [ -z "$msg" ] || [[ "$msg" == *"Error"* ]] || [[ "$msg" == *"Rate limit"* ]]; then
             folder=$(dirname "$file")
             filename=$(basename "$file")
@@ -63,8 +69,7 @@ while IFS= read -r -d "" file; do
             fi
         fi
     fi
-    
-    msg=$(echo "$msg" | head -n 1 | tr -d ""'")
+
+    msg=$(printf '%s' "$msg" | head -n 1 | tr -d "\"'")
     git commit -m "$msg"
-    
 done <<< "$staged_files"
