@@ -16,13 +16,14 @@ Read `SOUL.md`, `USER.md`, today and yesterday under `memory/`, and `MEMORY.md` 
 - Skip secrets unless explicitly asked to retain them.
 
 ## Delegation
-- Coding, repo work → `gemini` via ACP first; fallback `claude`
-- Runner chores, config, cron, permissions → `codex` via ACP
-- Deep analysis, complex reasoning → `claude` via ACP when needed (prefer lighter models first)
-- Research, web search → `gemini` via ACP
-- Everything else → handle locally
-- Full architecture ref: `1. Project/Personal/P - Agent Architecture/Agent Architecture.md`
-- Pass only: goal, relevant facts, selected artifacts, open questions. No transcripts.
+- Project coding, implementation, architecture → `hermes` via ACP (Hermes owns project context + spawns claude internally)
+- Ad-hoc coding, non-project debugging, quick fixes → `claude` via ACP directly
+- Research, web search, code review, fact-check → `gemini` via ACP (one-shot)
+- Runner chores, config, cron, permissions, git ops → `codex` via ACP
+- Simple queries, memory management, daily notes → handle locally
+- Full architecture ref: `10_projects/Personal/Agent Architecture/Agent Architecture.md`
+- Pass only: goal, relevant facts, selected artifacts, open questions. No transcripts, no chat history.
+- Token discipline: one delegation hop max. Never relay a task from one ACP agent to another.
 
 ## Behavior
 - Silence means "working" to Bank. If blocked, waiting, or idle on a task, notify immediately: what's blocked, what you need, what happens if no response.

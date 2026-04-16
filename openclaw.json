@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastTouchedVersion": "2026.4.2",
-    "lastTouchedAt": "2026-04-06T01:22:54.129Z"
+    "lastTouchedVersion": "2026.4.8",
+    "lastTouchedAt": "2026-04-08T14:12:08.462Z"
   },
   "wizard": {
     "lastRunAt": "2026-03-29T04:14:05.191Z",
@@ -30,7 +30,8 @@
       "claude",
       "codex",
       "gemini",
-      "opencode"
+      "opencode",
+      "hermes"
     ],
     "maxConcurrentSessions": 4,
     "stream": {
@@ -43,73 +44,7 @@
   },
   "models": {
     "mode": "merge",
-    "providers": {
-      "google": {
-        "baseUrl": "https://generativelanguage.googleapis.com",
-        "apiKey": {
-          "source": "env",
-          "provider": "default",
-          "id": "GEMINI_API_KEY"
-        },
-        "api": "google-generative-ai",
-        "models": [
-          {
-            "id": "gemini-2.5-flash",
-            "name": "Gemini 2.5 Flash",
-            "input": [
-              "text"
-            ],
-            "contextWindow": 1048576,
-            "maxTokens": 65536
-          },
-          {
-            "id": "gemini-2.5-flash-lite",
-            "name": "Gemini 2.5 Flash-Lite",
-            "input": [
-              "text"
-            ],
-            "contextWindow": 1048576,
-            "maxTokens": 65536
-          },
-          {
-            "id": "gemini-3-flash-preview",
-            "name": "Gemini 3 Flash Preview",
-            "input": [
-              "text"
-            ],
-            "contextWindow": 1048576,
-            "maxTokens": 65536
-          },
-          {
-            "id": "gemini-3.1-flash-lite-preview",
-            "name": "Gemini 3.1 Flash Lite Preview",
-            "input": [
-              "text"
-            ],
-            "contextWindow": 1048576,
-            "maxTokens": 65536
-          },
-          {
-            "id": "gemini-flash-latest",
-            "name": "Gemini Flash Latest",
-            "input": [
-              "text"
-            ],
-            "contextWindow": 1048576,
-            "maxTokens": 65536
-          },
-          {
-            "id": "gemma-3-27b-it",
-            "name": "Gemma 3 27B",
-            "input": [
-              "text"
-            ],
-            "contextWindow": 131072,
-            "maxTokens": 8192
-          }
-        ]
-      }
-    }
+    "providers": {}
   },
   "agents": {
     "defaults": {
@@ -117,16 +52,16 @@
         "primary": "openai-codex/gpt-5.4"
       },
       "models": {
-        "google/gemini-2.5-flash": {},
-        "google/gemini-2.5-flash-lite": {},
-        "google/gemini-3-flash-preview": {},
-        "google/gemini-3.1-flash-lite-preview": {},
-        "google/gemini-flash-latest": {},
-        "google/gemma-3-27b-it": {},
         "openai-codex/gpt-5.4": {},
-        "openrouter/auto": {},
-        "openrouter/openai/gpt-4.1-mini": {},
-        "openrouter/google/gemini-2.5-flash": {}
+        "google-gemini-cli/gemini-3-flash-preview": {},
+        "google-gemini-cli/gemini-3.1-pro-preview": {},
+        "google-gemini-cli/gemini-3.1-flash-lite-preview": {},
+        "google/gemini-3-flash-preview": {},
+        "openrouter/free": {},
+        "openrouter/qwen/qwen3.6-plus:free": {},
+        "openrouter/nvidia/nemotron-3-super-120b-a12b:free": {},
+        "openrouter/stepfun/step-3.5-flash:free": {},
+        "openrouter/minimax/minimax-m2.5:free": {}
       },
       "workspace": "/home/tphat/.openclaw/workspace",
       "bootstrapMaxChars": 8000,
@@ -197,7 +132,9 @@
       "enabled": true,
       "dmPolicy": "pairing",
       "groupPolicy": "disabled",
-      "streaming": "off",
+      "streaming": {
+        "mode": "off"
+      },
       "configWrites": true,
       "capabilities": {
         "inlineButtons": "dm"
@@ -208,7 +145,10 @@
           "6538865360"
         ],
         "target": "dm"
-      }
+      },
+      "allowFrom": [
+        "6538865360"
+      ]
     }
   },
   "discovery": {
@@ -235,7 +175,8 @@
         "windowMs": 60000,
         "lockoutMs": 300000,
         "exemptLoopback": true
-      }
+      },
+      "token": "8fad1b0de16c78eeb4be480e386bcf580e8a30487b675d8df41996ea47753634"
     },
     "tailscale": {
       "mode": "off",
@@ -258,7 +199,12 @@
         "enabled": true,
         "config": {
           "permissionMode": "approve-all",
-          "nonInteractivePermissions": "deny"
+          "nonInteractivePermissions": "deny",
+          "agents": {
+            "hermes": {
+              "command": "hermes acp"
+            }
+          }
         }
       },
       "google": {
@@ -272,6 +218,12 @@
             }
           }
         }
+      },
+      "openai": {
+        "enabled": true
+      },
+      "openrouter": {
+        "enabled": true
       }
     }
   }
