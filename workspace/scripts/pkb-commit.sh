@@ -10,7 +10,7 @@ if [ -f ~/.bashrc ]; then
     source ~/.bashrc
 fi
 
-REPO="/srv/syncthing/obsidian-second-brain"
+REPO="/data/syncthing/obsidian-second-brain"
 cd "$REPO" || exit 1
 
 if [ -z "$(git status --porcelain)" ]; then

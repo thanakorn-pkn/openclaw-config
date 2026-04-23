@@ -8,7 +8,7 @@
       "name": "daily-update-and-approval",
       "enabled": true,
       "createdAtMs": 1776565511014,
-      "updatedAtMs": 1776819640065,
+      "updatedAtMs": 1776906040959,
       "schedule": {
         "expr": "0 8 * * *",
         "tz": "Asia/Bangkok",
@@ -24,11 +24,11 @@
         "mode": "announce"
       },
       "state": {
-        "nextRunAtMs": 1776906000000,
-        "lastRunAtMs": 1776819600004,
+        "nextRunAtMs": 1776992400000,
+        "lastRunAtMs": 1776906000005,
         "lastRunStatus": "ok",
         "lastStatus": "ok",
-        "lastDurationMs": 40061,
+        "lastDurationMs": 40954,
         "lastDelivered": true,
         "lastDeliveryStatus": "delivered",
         "consecutiveErrors": 0
@@ -38,10 +38,10 @@
       "id": "f8db4596-56c2-423d-86cd-852e7908dd8b",
       "agentId": "main",
       "sessionKey": "agent:main:main",
-      "name": "check-hermes",
-      "enabled": true,
+      "name": "check-hermes (disabled by request)",
+      "enabled": false,
       "createdAtMs": 1776872930435,
-      "updatedAtMs": 1776887335830,
+      "updatedAtMs": 1776909107481,
       "schedule": {
         "everyMs": 3600000,
         "kind": "every",
@@ -54,36 +54,12 @@
         "text": "Hourly heartbeat: Check on the Hermes agent's long-running task. Check if it is stuck, and if it's down, fix the issue and make it resume the work."
       },
       "state": {
-        "nextRunAtMs": 1776890930467,
-        "lastRunAtMs": 1776887330467,
+        "lastRunAtMs": 1776908930518,
         "lastRunStatus": "ok",
         "lastStatus": "ok",
-        "lastDurationMs": 5363,
+        "lastDurationMs": 9862,
         "lastDeliveryStatus": "not-requested",
         "consecutiveErrors": 0
-      }
-    },
-    {
-      "id": "643820b7-3c2c-4047-beec-50895bd838bb",
-      "agentId": "main",
-      "sessionKey": "agent:main:main",
-      "name": "morning-summary",
-      "enabled": true,
-      "deleteAfterRun": true,
-      "createdAtMs": 1776873003443,
-      "updatedAtMs": 1776873003443,
-      "schedule": {
-        "at": "2026-04-23T00:30:00.000Z",
-        "kind": "at"
-      },
-      "sessionTarget": "main",
-      "wakeMode": "now",
-      "payload": {
-        "text": "It is now 7:30 AM. The user has woken up. Please summarize everything that happened overnight with Hermes and any other tasks, and send the comprehensive summary to the user now.",
-        "kind": "systemEvent"
-      },
-      "state": {
-        "nextRunAtMs": 1776904200000
       }
     }
   ]

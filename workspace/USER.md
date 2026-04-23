@@ -7,6 +7,7 @@
 - Telegram: `@ThanakornPKN`
 
 ## Preferences
+- Extremely short and precise answers ONLY.
 - Compact answers first; expand on request.
 - Python-first data engineer at KKP.
 - Uses an Obsidian PARA vault at `/srv/syncthing/obsidian-second-brain`.
