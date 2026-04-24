@@ -10,7 +10,20 @@ if [ -f ~/.bashrc ]; then
     source ~/.bashrc
 fi
 
-REPO="/data/syncthing/obsidian-second-brain"
+REPO="${PKB_REPO:-/data/syncthing/obsidian-second-brain}"
+if [ ! -d "$REPO" ]; then
+    for candidate in \
+        /data/syncthing/obsidian-second-brain \
+        /srv/syncthing/obsidian-second-brain \
+        /home/tphat/syncthing/obsidian-second-brain
+    do
+        if [ -d "$candidate" ]; then
+            REPO="$candidate"
+            break
+        fi
+    done
+fi
+
 cd "$REPO" || exit 1
 
 if [ -z "$(git status --porcelain)" ]; then
@@ -23,15 +36,15 @@ if ! git config user.name >/dev/null 2>&1; then
 fi
 
 git add -A
-staged_files=$(git diff --name-only --cached -z)
+mapfile -d '' -t staged_files < <(git diff --name-only -z --cached)
 
-if [ -z "$staged_files" ]; then
+if [ "${#staged_files[@]}" -eq 0 ]; then
     exit 0
 fi
 
 git reset --mixed >/dev/null 2>&1
 
-while IFS= read -r -d '' file; do
+for file in "${staged_files[@]}"; do
     if [ -z "$file" ]; then
         continue
     fi
@@ -72,4 +85,4 @@ while IFS= read -r -d '' file; do
 
     msg=$(printf '%s' "$msg" | head -n 1 | tr -d "\"'")
     git commit -m "$msg"
-done <<< "$staged_files"
+done

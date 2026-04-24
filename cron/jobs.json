@@ -8,7 +8,6 @@
       "name": "daily-update-and-approval",
       "enabled": true,
       "createdAtMs": 1776565511014,
-      "updatedAtMs": 1776906040959,
       "schedule": {
         "expr": "0 8 * * *",
         "tz": "Asia/Bangkok",
@@ -23,16 +22,7 @@
       "delivery": {
         "mode": "announce"
       },
-      "state": {
-        "nextRunAtMs": 1776992400000,
-        "lastRunAtMs": 1776906000005,
-        "lastRunStatus": "ok",
-        "lastStatus": "ok",
-        "lastDurationMs": 40954,
-        "lastDelivered": true,
-        "lastDeliveryStatus": "delivered",
-        "consecutiveErrors": 0
-      }
+      "state": {}
     },
     {
       "id": "f8db4596-56c2-423d-86cd-852e7908dd8b",
@@ -41,7 +31,6 @@
       "name": "check-hermes (disabled by request)",
       "enabled": false,
       "createdAtMs": 1776872930435,
-      "updatedAtMs": 1776909107481,
       "schedule": {
         "everyMs": 3600000,
         "kind": "every",
@@ -53,14 +42,7 @@
         "kind": "systemEvent",
         "text": "Hourly heartbeat: Check on the Hermes agent's long-running task. Check if it is stuck, and if it's down, fix the issue and make it resume the work."
       },
-      "state": {
-        "lastRunAtMs": 1776908930518,
-        "lastRunStatus": "ok",
-        "lastStatus": "ok",
-        "lastDurationMs": 9862,
-        "lastDeliveryStatus": "not-requested",
-        "consecutiveErrors": 0
-      }
+      "state": {}
     }
   ]
 }
