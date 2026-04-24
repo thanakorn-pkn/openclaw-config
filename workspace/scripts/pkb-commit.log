@@ -16,3 +16,34 @@
 /home/tphat/.openclaw/workspace/scripts/pkb-commit.sh: line 14: cd: /srv/syncthing/obsidian-second-brain: No such file or directory
 /home/tphat/.openclaw/workspace/scripts/pkb-commit.sh: line 14: cd: /srv/syncthing/obsidian-second-brain: No such file or directory
 /home/tphat/.openclaw/workspace/scripts/pkb-commit.sh: line 26: warning: command substitution: ignored null byte in input
+🔍 Scanning staged files for secrets...
+fatal: ambiguous argument ':"10_projects/Personal/Mission Control/Mission Control \342\200\224 Monitoring Slice Progress.md"': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+✓ No secrets detected.
+[main ec10fc8] docs(10_projects/Personal/Mission Control): update Mission Control — Monitoring Slice Progress.md
+ 1 file changed, 19 insertions(+), 29 deletions(-)
+🔍 Scanning staged files for secrets...
+✓ No secrets detected.
+[main b2f83c2] docs(20_areas/Homelab/ADR): update Best OS for Rpi5.pdf
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 20_areas/Homelab/ADR/Best OS for Rpi5.pdf
+🔍 Scanning staged files for secrets...
+✓ No secrets detected.
+[main bc752b8] docs(20_areas/Homelab/Inventory): update Acer Swift.md
+ 1 file changed, 130 insertions(+)
+ create mode 100644 20_areas/Homelab/Inventory/Acer Swift.md
+🔍 Scanning staged files for secrets...
+✓ No secrets detected.
+[main 76bb6e2] docs(20_areas/Homelab/Inventory): update NUC-13-Pro.md
+ 1 file changed, 71 insertions(+)
+ create mode 100644 20_areas/Homelab/Inventory/NUC-13-Pro.md
+🔍 Scanning staged files for secrets...
+✓ No secrets detected.
+[main 249f4a0] docs(20_areas/Homelab/Inventory): update TPKN-PC-RED.md
+ 1 file changed, 45 insertions(+)
+ create mode 100644 20_areas/Homelab/Inventory/TPKN-PC-RED.md
+🔍 Scanning staged files for secrets...
+✓ No secrets detected.
+[main be6a083] docs(20_areas/Homelab): update Local LLM Benchmarks NUC-13-Pro.md
+ 1 file changed, 7 insertions(+)
