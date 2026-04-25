@@ -47,3 +47,25 @@ Use '--' to separate paths from revisions, like this:
 ✓ No secrets detected.
 [main be6a083] docs(20_areas/Homelab): update Local LLM Benchmarks NUC-13-Pro.md
  1 file changed, 7 insertions(+)
+🔍 Scanning staged files for secrets...
+✓ No secrets detected.
+[main d5121a3] docs(10_projects/Personal/Mission Control): update hermes_mission_control_solution.md
+ 1 file changed, 644 insertions(+)
+ create mode 100644 10_projects/Personal/Mission Control/hermes_mission_control_solution.md
+[main c96dd4f] docs(20_areas/Home): update Acer Swift.md
+ 1 file changed, 130 deletions(-)
+ delete mode 100644 20_areas/Home/Acer Swift.md
+[main 52e11f1] docs(20_areas/Home): update Best OS for Rpi5.pdf
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ delete mode 100644 20_areas/Home/Best OS for Rpi5.pdf
+[main 89c2bff] docs(20_areas/Home): update NUC-13-Pro.md
+ 1 file changed, 63 deletions(-)
+ delete mode 100644 20_areas/Home/NUC-13-Pro.md
+[main 716883a] docs(20_areas/Home): update PC.md
+ 1 file changed, 45 deletions(-)
+ delete mode 100644 20_areas/Home/PC.md
+🔍 Scanning staged files for secrets...
+✓ No secrets detected.
+[main 659b1ae] docs(30_resources/AI Agent): update claude-obsidian.md
+ 1 file changed, 97 insertions(+)
+ create mode 100644 30_resources/AI Agent/claude-obsidian.md

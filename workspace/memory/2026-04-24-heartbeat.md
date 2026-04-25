@@ -11,6 +11,8 @@
 - Latest host-unresponsive investigation points to an OOM cascade on 2026-04-24: `prometheus` was killed at 09:24, `grafana` at 09:26, and `openclaw-gateway` at 09:27; later the host entered repeated memory pressure, k3s API timeouts, and a final wave of OOM kills around 17:30 before reboot.
 - `apt-daily.service` also consumed 1h 50m CPU during the same boot, likely worsening pressure.
 - Current post-reboot state is healthy again: ~6.5 GiB / 30 GiB used, low load, and `paperclip-db` is healthy.
-- Found the Flux repo for the monitoring work: `ssh://git@github.com/thanakorn-pkn/homelab-infra.git`.
-- Tightened the remaining local OOM protections on the host: `paperclip-db.container` now has `MemoryMax=256M`, and user service limits are loaded for `openclaw-gateway`, `hermes-gateway`, and `paperclip-db`.
+- Found the Flux repo for the monitoring work: `/home/tphat/projects/homelab-infra`.
+- Current homelab-infra worktree already has resource-limit edits in progress for `kube-prometheus-stack` plus host firewall entries for Multica.
+- Validated the edited YAML files with `git diff --check` and a `python3` YAML parse check; both pass.
+- I could not query live k3s state from this session because elevated access is unavailable here, so the next live-cluster verification step is currently blocked.
 - Latest async build run finished cleanly and produced `localhost/paperclip:latest` (`6ab8d23850ee...`), so the current Paperclip container path is still green.

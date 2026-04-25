@@ -1,0 +1,26 @@
+# 2026-04-25 — Heartbeat Check
+
+- Checked current homelab-infra state for the Paperclip/Mission Control host hardening track.
+- Current worktree changes are limited to:
+  - `k8s/infrastructure/controllers/kube-prometheus-stack/values.yaml`
+  - `hosts/inventory/host_vars/nuc-13-pro.yml`
+- Verified both edited YAML files pass `git diff --check` and `python3` YAML parsing.
+- The repo changes add memory limits for the monitoring stack and firewall allowances for Multica.
+- Confirmed live cluster access is available from this session (`kubectl get nodes`).
+- Live monitoring stack was healthy before the rollout: all monitoring pods were Running, node memory was ~22%, and Prometheus/Grafana were the biggest consumers.
+- Applied the local kustomization to the cluster and annotated the HelmRelease for immediate reconciliation.
+- HelmRelease upgraded successfully to revision v2, and the monitoring pods rolled to fresh replicas.
+- Confirmed the live spec now includes the new resource limits for Grafana, Prometheus, monitoring operator, kube-state-metrics, and node exporter.
+- Verified on `nuc-13-pro` that UFW already contains the Multica allow rules for `3001/tcp` and `8081/tcp` from both LAN and ULA ranges.
+- Current Paperclip host check: `paperclip-db` is healthy on `127.0.0.1:5432`, `paperclip-dev-once` is live on `127.0.0.1:3100`, and `http://127.0.0.1:3100/api/health` + `/board` both return 200.
+- `paperclip-app.service` is installed but inactive; the live dev service is already carrying the host-mode workload, so no immediate action needed.
+- Attempted to run `hosts/playbooks/containers.yml` to bring up Mission Control, but the Ansible run stopped in the Pi-hole role because `community.general.onepassword` could not sign in without 1Password credentials.
+- Confirmed `mc-pod.service` is not present yet on the host.
+- Sourced the local `.env` to supply `OP_SERVICE_ACCOUNT_TOKEN`, `mission_control_db_password`, and `mission_control_openclaw_gateway_token` for the Ansible run.
+- Fixed the rootless Quadlet directory ownership in `hosts/roles_common/podman_quadlet/tasks/main.yml` so `nuc-13-pro` can write `/etc/containers/systemd/users/1000`.
+- Re-ran `hosts/playbooks/mission_control.yml` successfully; `mc-pod` and its containers were created and started.
+- Verified Mission Control is live at `http://192.168.1.161:3000/` and `http://192.168.1.161:8000/api/health` returns `{"status":"ok","service":"mission-control"}`.
+- Added memory caps to the new Mission Control Podman services (`mc-db`, `mc-backend`, `mc-frontend`) so they have explicit systemd cgroup limits alongside the existing OOM hardening work.
+- YAML parsing and `git diff --check` still pass for the edited homelab-infra files; `ansible-playbook` is not installed in this session, so live syntax-checking remains unavailable here.
+- Fixed the Mission Control container health checks to avoid missing `curl` in the images; backend now uses a Python URL probe and frontend uses a Node `fetch` probe.
+- Revalidated the live host units; `mc-backend` and `mc-frontend` are now `healthy` again.
