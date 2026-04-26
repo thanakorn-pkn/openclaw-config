@@ -69,3 +69,16 @@ Use '--' to separate paths from revisions, like this:
 [main 659b1ae] docs(30_resources/AI Agent): update claude-obsidian.md
  1 file changed, 97 insertions(+)
  create mode 100644 30_resources/AI Agent/claude-obsidian.md
+🔍 Scanning staged files for secrets...
+✓ No secrets detected.
+[main b4bdc8c] docs(31_llm_wiki/concepts): update clean-code.md
+ 1 file changed, 33 insertions(+)
+ create mode 100644 31_llm_wiki/concepts/clean-code.md
+🔍 Scanning staged files for secrets...
+✓ No secrets detected.
+[main 38099b9] docs(31_llm_wiki): update index.md
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+🔍 Scanning staged files for secrets...
+✓ No secrets detected.
+[main b94422d] docs(31_llm_wiki): update log.md
+ 1 file changed, 12 insertions(+), 1 deletion(-)
