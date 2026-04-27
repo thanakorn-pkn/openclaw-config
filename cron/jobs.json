@@ -5,7 +5,7 @@
       "id": "3c28151b-b601-4d2b-842c-19134ae809ec",
       "agentId": "main",
       "sessionKey": "agent:main:main",
-      "name": "daily-update-and-approval",
+      "name": "daily-openclaw-self-update",
       "enabled": true,
       "createdAtMs": 1776565511014,
       "schedule": {
@@ -16,12 +16,17 @@
       "sessionTarget": "isolated",
       "wakeMode": "now",
       "payload": {
-        "message": "Summarize recent updates to OpenClaw platform, prepare an approval card for the user, and wait for confirmation to proceed with self-update and git commit.",
-        "kind": "agentTurn"
+        "message": "Use the openclaw-self-update skill to check the installed OpenClaw version, compare it with the latest published version, upgrade if newer, verify the result, and report the before/after version plus any restart that was needed. Do not ask for approval; the update is already authorized.",
+        "kind": "agentTurn",
+        "toolsAllow": [
+          "exec",
+          "process"
+        ]
       },
       "delivery": {
         "mode": "announce"
       },
+      "description": "Daily OpenClaw self-update job using the openclaw-self-update skill.",
       "state": {}
     },
     {
