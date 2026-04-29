@@ -82,3 +82,26 @@ Use '--' to separate paths from revisions, like this:
 ✓ No secrets detected.
 [main b94422d] docs(31_llm_wiki): update log.md
  1 file changed, 12 insertions(+), 1 deletion(-)
+🔍 Scanning staged files for secrets...
+✓ No secrets detected.
+[main 7094328] docs(10_projects): update My Baby.md
+ 1 file changed, 8 insertions(+)
+🔍 Scanning staged files for secrets...
+fatal: ambiguous argument ':"10_projects/Personal/Trip \340\270\247\340\270\261\340\270\231\340\271\201\340\270\243\340\270\207\340\270\207\340\270\262\340\270\231 2026.md"': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+✓ No secrets detected.
+[main bd557e6] docs(10_projects/Personal): update Trip วันแรงงาน 2026.md
+ 1 file changed, 14 insertions(+), 12 deletions(-)
+🔍 Scanning staged files for secrets...
+fatal: ambiguous argument ':"20_areas/Health/\340\270\243\340\270\261\340\270\201\340\270\251\340\270\262\340\271\202\340\270\243\340\270\204\340\270\245\340\270\241\340\270\236\340\270\264\340\270\251\340\271\200\340\270\243\340\270\267\340\271\211\340\270\255\340\270\243\340\270\261\340\270\207.md"': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+✓ No secrets detected.
+[main 6881034] docs(20_areas/Health): update รักษาโรคลมพิษเรื้อรัง.md
+ 1 file changed, 4 insertions(+)
+🔍 Scanning staged files for secrets...
+✓ No secrets detected.
+[main b99a31b] docs(O. Inbox/Attachments): update IMG_8956.jpeg
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 O. Inbox/Attachments/IMG_8956.jpeg
